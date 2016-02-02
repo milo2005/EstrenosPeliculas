@@ -1,13 +1,16 @@
 package com.example.estacionvl_tc_014.estrenos.adapters;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.estacionvl_tc_014.estrenos.R;
 import com.example.estacionvl_tc_014.estrenos.models.Pelicula;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -56,7 +59,18 @@ public class PeliculaAdapter extends BaseAdapter{
 
         TextView score = (TextView) v
                 .findViewById(R.id.txt_score);
-        score.setText(""+p.getCalificacion());
+        score.setText("" + p.getCalificacion());
+
+        TextView time = (TextView)
+                v.findViewById(R.id.txt_time);
+        time.setText(p.getDuracion());
+
+        ImageView iV = (ImageView)
+                v.findViewById(R.id.img);
+
+        Picasso.with(activity)
+                .load(Uri.parse(p.getUrl()))
+                .into(iV);
 
 
 
